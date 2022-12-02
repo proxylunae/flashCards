@@ -4,11 +4,13 @@
     grid-template-rows: 200px 200px 200px;
     grid-template-columns: 200px 200px 200px;
     border-radius: 20px;
+    perspective: 1000px;
 }
 
 body {
     display: flex;
     justify-content: center;
+    align-items: center;
     background: url("https://img5.goodfon.ru/wallpaper/nbig/2/97/mojave-desert-night.jpg") no-repeat;
     background-size: cover;
     font-family: 'Red Hat Display', sans-serif;
@@ -18,14 +20,36 @@ body {
     border-radius: 20px;
 }
 
-.card-box {
-    border-radius: 20px;
+.card {
+    position: relative;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    height: 100%;
+    width: 100%;
     display: flex;
-    border: #b7b0b0 solid 1px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     font-size: 20px;
-    opacity: 85%;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.front {
+    z-index: 2;
+    backface-visibility: hidden;
+}
+
+.back {
+    z-index: 1;
+    transform: rotateY(180deg);
 }
 
 .quiz-title {
@@ -47,7 +71,7 @@ body {
 }
 
 .Korea {
-    background: linear-gradient(#ef1d1d, #f391c0);
+    background: linear-gradient(#fcdddd, #f391c0);
 }
 
 .Sweden {
